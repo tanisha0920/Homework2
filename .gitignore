@@ -1,0 +1,12 @@
+# Instructor-only — must NOT ship to students
+instructor/
+
+# HW-2 build and fuzzing scratch (do not commit)
+work/
+work-out/
+out/
+gcov-build/
+*.gcda
+*.gcno
+/coverage.html
+harness/fuzz_pdf
