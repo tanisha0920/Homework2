@@ -1,0 +1,56 @@
+=================================================================
+==26261==ERROR: AddressSanitizer: global-buffer-overflow on address 0x563c8e95e91c at pc 0x563c8e82e7a3 bp 0x7ffe790ba1b0 sp 0x7ffe790ba1a8
+READ of size 2 at 0x563c8e95e91c thread T0
+    #0 0x563c8e82e7a2 in CCITTFaxStream::getBlackCode() /src/xpdf-asan/xpdf/Stream.cc:1721:12
+    #1 0x563c8e82525f in CCITTFaxStream::lookChar() /src/xpdf-asan/xpdf/Stream.cc:1487:21
+    #2 0x563c8e860a3d in CCITTFaxStream::getChar() /src/xpdf-asan/xpdf/./Stream.h:512:15
+    #3 0x563c8e7ec5ed in Object::streamGetChar() /src/xpdf-asan/xpdf/./Object.h:286:20
+    #4 0x563c8e7ec5ed in Lexer::getChar() /src/xpdf-asan/xpdf/Lexer.cc:92:42
+    #5 0x563c8e7ec5ed in Lexer::getObj(Object*) /src/xpdf-asan/xpdf/Lexer.cc:124:14
+    #6 0x563c8e8082c7 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc
+    #7 0x563c8e6efaa5 in Gfx::go(int) /src/xpdf-asan/xpdf/Gfx.cc:620:13
+    #8 0x563c8e6eea6c in Gfx::display(Object*, int) /src/xpdf-asan/xpdf/Gfx.cc:553:3
+    #9 0x563c8e805948 in Page::displaySlice(OutputDev*, double, double, int, int, int, int, int, int, int, int, Catalog*, int (*)(void*), void*) /src/xpdf-asan/xpdf/Page.cc:317:10
+    #10 0x563c8e80520f in Page::display(OutputDev*, double, double, int, int, int, int, Catalog*, int (*)(void*), void*) /src/xpdf-asan/xpdf/Page.cc:264:3
+    #11 0x563c8e80fa4c in PDFDoc::displayPage(OutputDev*, int, double, double, int, int, int, int, int (*)(void*), void*) /src/xpdf-asan/xpdf/PDFDoc.cc:372:27
+    #12 0x563c8e80fa4c in PDFDoc::displayPages(OutputDev*, int, int, double, double, int, int, int, int, int (*)(void*), void*) /src/xpdf-asan/xpdf/PDFDoc.cc:385:5
+    #13 0x563c8e8a3436 in main /src/xpdf-asan/xpdf/pdftotext.cc:237:10
+    #14 0x7f2a7d681d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 490fef8403240c91833978d494d39e537409b92e)
+    #15 0x7f2a7d681e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 490fef8403240c91833978d494d39e537409b92e)
+    #16 0x563c8e5a8634 in _start (/work/work-out/pdftotext.asan+0xb0634) (BuildId: 32dce229172ab37a5f6b914b4b941bb80b9856c6)
+
+0x563c8e95e91c is located 4 bytes before global variable 'blackTab3' defined in '/src/xpdf-asan/xpdf/./Stream-CCITT.h:440' (0x563c8e95e920) of size 256
+0x563c8e95e91c is located 188 bytes after global variable 'blackTab2' defined in '/src/xpdf-asan/xpdf/./Stream-CCITT.h:360' (0x563c8e95e560) of size 768
+SUMMARY: AddressSanitizer: global-buffer-overflow /src/xpdf-asan/xpdf/Stream.cc:1721:12 in CCITTFaxStream::getBlackCode()
+Shadow bytes around the buggy address:
+  0x563c8e95e680: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x563c8e95e700: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x563c8e95e780: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x563c8e95e800: 00 00 00 00 00 00 00 00 00 00 00 00 f9 f9 f9 f9
+  0x563c8e95e880: f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9 f9
+=>0x563c8e95e900: f9 f9 f9[f9]00 00 00 00 00 00 00 00 00 00 00 00
+  0x563c8e95e980: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x563c8e95ea00: 00 00 00 00 f9 f9 f9 f9 f9 f9 f9 f9 00 00 00 00
+  0x563c8e95ea80: 00 01 f9 f9 f9 f9 f9 f9 07 f9 f9 f9 00 00 01 f9
+  0x563c8e95eb00: f9 f9 f9 f9 00 00 00 f9 f9 f9 f9 f9 00 05 f9 f9
+  0x563c8e95eb80: 00 02 f9 f9 00 00 03 f9 f9 f9 f9 f9 00 00 f9 f9
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==26261==ABORTING

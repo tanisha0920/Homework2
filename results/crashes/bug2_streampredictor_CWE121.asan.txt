@@ -1,0 +1,61 @@
+=================================================================
+==21441==ERROR: AddressSanitizer: stack-buffer-overflow on address 0x7fd303500561 at pc 0x55ded3ac3914 bp 0x7ffc8726e010 sp 0x7ffc8726d7e0
+WRITE of size 198 at 0x7fd303500561 thread T0
+    #0 0x55ded3ac3913 in __asan_memset (/work/work-out/pdftotext.asan+0x149913) (BuildId: 32dce229172ab37a5f6b914b4b941bb80b9856c6)
+    #1 0x55ded3c9bb3f in StreamPredictor::getNextLine() /src/xpdf-asan/xpdf/Stream.cc:473:3
+    #2 0x55ded3cd5275 in StreamPredictor::getChar() /src/xpdf-asan/xpdf/Stream.cc:446:10
+    #3 0x55ded3cd5275 in FlateStream::getChar() /src/xpdf-asan/xpdf/Stream.cc:3953:18
+    #4 0x55ded3c6e5ed in Object::streamGetChar() /src/xpdf-asan/xpdf/./Object.h:286:20
+    #5 0x55ded3c6e5ed in Lexer::getChar() /src/xpdf-asan/xpdf/Lexer.cc:92:42
+    #6 0x55ded3c6e5ed in Lexer::getObj(Object*) /src/xpdf-asan/xpdf/Lexer.cc:124:14
+    #7 0x55ded3c895f3 in Parser::Parser(XRef*, Lexer*, int) /src/xpdf-asan/xpdf/Parser.cc:29:10
+    #8 0x55ded3b70a43 in Gfx::display(Object*, int) /src/xpdf-asan/xpdf/Gfx.cc:552:16
+    #9 0x55ded3c87948 in Page::displaySlice(OutputDev*, double, double, int, int, int, int, int, int, int, int, Catalog*, int (*)(void*), void*) /src/xpdf-asan/xpdf/Page.cc:317:10
+    #10 0x55ded3c8720f in Page::display(OutputDev*, double, double, int, int, int, int, Catalog*, int (*)(void*), void*) /src/xpdf-asan/xpdf/Page.cc:264:3
+    #11 0x55ded3c91a4c in PDFDoc::displayPage(OutputDev*, int, double, double, int, int, int, int, int (*)(void*), void*) /src/xpdf-asan/xpdf/PDFDoc.cc:372:27
+    #12 0x55ded3c91a4c in PDFDoc::displayPages(OutputDev*, int, int, double, double, int, int, int, int, int (*)(void*), void*) /src/xpdf-asan/xpdf/PDFDoc.cc:385:5
+    #13 0x55ded3d25436 in main /src/xpdf-asan/xpdf/pdftotext.cc:237:10
+    #14 0x7fd30511ed8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 490fef8403240c91833978d494d39e537409b92e)
+    #15 0x7fd30511ee3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 490fef8403240c91833978d494d39e537409b92e)
+    #16 0x55ded3a2a634 in _start (/work/work-out/pdftotext.asan+0xb0634) (BuildId: 32dce229172ab37a5f6b914b4b941bb80b9856c6)
+
+Address 0x7fd303500561 is located in stack of thread T0 at offset 97 in frame
+    #0 0x55ded3c9b94f in StreamPredictor::getNextLine() /src/xpdf-asan/xpdf/Stream.cc:453
+
+  This frame has 1 object(s):
+    [32, 97) 'upLeftBuf' (line 455) <== Memory access at offset 97 overflows this variable
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-buffer-overflow (/work/work-out/pdftotext.asan+0x149913) (BuildId: 32dce229172ab37a5f6b914b4b941bb80b9856c6) in __asan_memset
+Shadow bytes around the buggy address:
+  0x7fd303500280: f3 f3 f3 f3 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd303500300: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd303500380: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd303500400: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7fd303500480: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+=>0x7fd303500500: f1 f1 f1 f1 00 00 00 00 00 00 00 00[01]f3 f3 f3
+  0x7fd303500580: f3 f3 f3 f3 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd303500600: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd303500680: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd303500700: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x7fd303500780: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==21441==ABORTING

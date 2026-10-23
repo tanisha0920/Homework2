@@ -1,0 +1,59 @@
+=================================================================
+==27919==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x620000001e04 at pc 0x55ba9738f4bf bp 0x7ffd566c1280 sp 0x7ffd566c1278
+WRITE of size 2 at 0x620000001e04 thread T0
+    #0 0x55ba9738f4be in CCITTFaxStream::lookChar() /src/xpdf-asan/xpdf/Stream.cc:1489:19
+    #1 0x55ba973c4a3d in CCITTFaxStream::getChar() /src/xpdf-asan/xpdf/./Stream.h:512:15
+    #2 0x55ba97351c01 in Object::streamGetChar() /src/xpdf-asan/xpdf/./Object.h:286:20
+    #3 0x55ba97351c01 in Lexer::getChar() /src/xpdf-asan/xpdf/Lexer.cc:92:42
+    #4 0x55ba97351c01 in Lexer::getObj(Object*) /src/xpdf-asan/xpdf/Lexer.cc:443:7
+    #5 0x55ba9736c2c7 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc
+    #6 0x55ba97253aa5 in Gfx::go(int) /src/xpdf-asan/xpdf/Gfx.cc:620:13
+    #7 0x55ba97252a6c in Gfx::display(Object*, int) /src/xpdf-asan/xpdf/Gfx.cc:553:3
+    #8 0x55ba97369948 in Page::displaySlice(OutputDev*, double, double, int, int, int, int, int, int, int, int, Catalog*, int (*)(void*), void*) /src/xpdf-asan/xpdf/Page.cc:317:10
+    #9 0x55ba9736920f in Page::display(OutputDev*, double, double, int, int, int, int, Catalog*, int (*)(void*), void*) /src/xpdf-asan/xpdf/Page.cc:264:3
+    #10 0x55ba97373a4c in PDFDoc::displayPage(OutputDev*, int, double, double, int, int, int, int, int (*)(void*), void*) /src/xpdf-asan/xpdf/PDFDoc.cc:372:27
+    #11 0x55ba97373a4c in PDFDoc::displayPages(OutputDev*, int, int, double, double, int, int, int, int, int (*)(void*), void*) /src/xpdf-asan/xpdf/PDFDoc.cc:385:5
+    #12 0x55ba97407436 in main /src/xpdf-asan/xpdf/pdftotext.cc:237:10
+    #13 0x7f8bbef49d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 490fef8403240c91833978d494d39e537409b92e)
+    #14 0x7f8bbef49e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 490fef8403240c91833978d494d39e537409b92e)
+    #15 0x55ba9710c634 in _start (/work/work-out/pdftotext.asan+0xb0634) (BuildId: 32dce229172ab37a5f6b914b4b941bb80b9856c6)
+
+0x620000001e04 is located 0 bytes after 3460-byte region [0x620000001080,0x620000001e04)
+allocated by thread T0 here:
+    #0 0x55ba971a645e in malloc (/work/work-out/pdftotext.asan+0x14a45e) (BuildId: 32dce229172ab37a5f6b914b4b941bb80b9856c6)
+    #1 0x55ba9741c66b in gmalloc /src/xpdf-asan/goo/gmem.cc:97:13
+    #2 0x55ba9741c66b in gmallocn /src/xpdf-asan/goo/gmem.cc:172:10
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /src/xpdf-asan/xpdf/Stream.cc:1489:19 in CCITTFaxStream::lookChar()
+Shadow bytes around the buggy address:
+  0x620000001b80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x620000001c00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x620000001c80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x620000001d00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x620000001d80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x620000001e00:[04]fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x620000001e80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x620000001f00: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x620000001f80: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x620000002000: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x620000002080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==27919==ABORTING

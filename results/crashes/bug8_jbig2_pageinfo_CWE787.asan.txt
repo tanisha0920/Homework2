@@ -1,0 +1,22 @@
+=================================================================
+==21619==ERROR: AddressSanitizer: unknown-crash on address 0xd77c0844596006 at pc 0x55b487c90914 bp 0x7ffc619dd660 sp 0x7ffc619dce30
+WRITE of size 60653494941081606 at 0xd77c0844596006 thread T0
+    #0 0x55b487c90913 in __asan_memset (/work/work-out/pdftotext.asan+0x149913) (BuildId: 32dce229172ab37a5f6b914b4b941bb80b9856c6)
+    #1 0x55b487defbe0 in JBIG2Stream::readPageInfoSeg(unsigned int) /src/xpdf-asan/xpdf/JBIG2Stream.cc
+    #2 0x55b487ddc9fe in JBIG2Stream::readSegments() /src/xpdf-asan/xpdf/JBIG2Stream.cc:1352:7
+    #3 0x55b487ddb3e7 in JBIG2Stream::reset() /src/xpdf-asan/xpdf/JBIG2Stream.cc:1179:3
+    #4 0x55b487e3aba3 in Object::streamReset() /src/xpdf-asan/xpdf/./Object.h:280:13
+    #5 0x55b487e3aba3 in Lexer::Lexer(XRef*, Object*) /src/xpdf-asan/xpdf/Lexer.cc:74:12
+    #6 0x55b487d3da15 in Gfx::display(Object*, int) /src/xpdf-asan/xpdf/Gfx.cc:552:33
+    #7 0x55b487e54948 in Page::displaySlice(OutputDev*, double, double, int, int, int, int, int, int, int, int, Catalog*, int (*)(void*), void*) /src/xpdf-asan/xpdf/Page.cc:317:10
+    #8 0x55b487e5420f in Page::display(OutputDev*, double, double, int, int, int, int, Catalog*, int (*)(void*), void*) /src/xpdf-asan/xpdf/Page.cc:264:3
+    #9 0x55b487e5ea4c in PDFDoc::displayPage(OutputDev*, int, double, double, int, int, int, int, int (*)(void*), void*) /src/xpdf-asan/xpdf/PDFDoc.cc:372:27
+    #10 0x55b487e5ea4c in PDFDoc::displayPages(OutputDev*, int, int, double, double, int, int, int, int, int (*)(void*), void*) /src/xpdf-asan/xpdf/PDFDoc.cc:385:5
+    #11 0x55b487ef2436 in main /src/xpdf-asan/xpdf/pdftotext.cc:237:10
+    #12 0x7f37ab6d2d8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 490fef8403240c91833978d494d39e537409b92e)
+    #13 0x7f37ab6d2e3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 490fef8403240c91833978d494d39e537409b92e)
+    #14 0x55b487bf7634 in _start (/work/work-out/pdftotext.asan+0xb0634) (BuildId: 32dce229172ab37a5f6b914b4b941bb80b9856c6)
+
+Address 0xd77c0844596006 is a wild pointer inside of access range of size 0xd77c0844596006.
+SUMMARY: AddressSanitizer: unknown-crash (/work/work-out/pdftotext.asan+0x149913) (BuildId: 32dce229172ab37a5f6b914b4b941bb80b9856c6) in __asan_memset
+==21619==ABORTING

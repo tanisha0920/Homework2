@@ -1,0 +1,150 @@
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==28749==ERROR: AddressSanitizer: stack-overflow on address 0x7ffc67947f28 (pc 0x7f7fab9fe048 bp 0x7ffc679484b0 sp 0x7ffc67947f20 T0)
+    #0 0x7f7fab9fe048  (/lib/x86_64-linux-gnu/libc.so.6+0x75048) (BuildId: 490fef8403240c91833978d494d39e537409b92e)
+    #1 0x7f7faba00664  (/lib/x86_64-linux-gnu/libc.so.6+0x77664) (BuildId: 490fef8403240c91833978d494d39e537409b92e)
+    #2 0x55fc46564cac in __interceptor_fprintf (/work/work-out/pdftotext.asan+0xd6cac) (BuildId: 32dce229172ab37a5f6b914b4b941bb80b9856c6)
+    #3 0x55fc46646fc9 in error(int, char*, ...) /src/xpdf-asan/xpdf/Error.cc:29:5
+    #4 0x55fc4679e95f in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:76:2
+    #5 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #6 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #7 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #8 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #9 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #10 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #11 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #12 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #13 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #14 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #15 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #16 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #17 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #18 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #19 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #20 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #21 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #22 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #23 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #24 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #25 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #26 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #27 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #28 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #29 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #30 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #31 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #32 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #33 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #34 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #35 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #36 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #37 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #38 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #39 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #40 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #41 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #42 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #43 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #44 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #45 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #46 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #47 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #48 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #49 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #50 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #51 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #52 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #53 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #54 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #55 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #56 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #57 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #58 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #59 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #60 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #61 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #62 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #63 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #64 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #65 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #66 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #67 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #68 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #69 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #70 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #71 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #72 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #73 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #74 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #75 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #76 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #77 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #78 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #79 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #80 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #81 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #82 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #83 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #84 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #85 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #86 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #87 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #88 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #89 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #90 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #91 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #92 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #93 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #94 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #95 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #96 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #97 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #98 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #99 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #100 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #101 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #102 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #103 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #104 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #105 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #106 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #107 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #108 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #109 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #110 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #111 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #112 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #113 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #114 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #115 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #116 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #117 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #118 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #119 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #120 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #121 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #122 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #123 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #124 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #125 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #126 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #127 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #128 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #129 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #130 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #131 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #132 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #133 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #134 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #135 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #136 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #137 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #138 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #139 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #140 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #141 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19
+    #142 0x55fc467ab94b in Stream::addFilters(Object*) /src/xpdf-asan/xpdf/Stream.cc:113:11
+    #143 0x55fc467a22b3 in Parser::makeStream(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:203:14
+    #144 0x55fc4679f571 in Parser::getObj(Object*, unsigned char*, CryptAlgorithm, int, int, int) /src/xpdf-asan/xpdf/Parser.cc:94:18
+    #145 0x55fc4682fb6c in XRef::fetch(int, int, Object*) /src/xpdf-asan/xpdf/XRef.cc:823:13
+    #146 0x55fc467ab94b in Object::arrayGet(int, Object*) /src/xpdf-asan/xpdf/./Object.h:229:19

@@ -1,0 +1,24 @@
+=================================================================
+==21643==ERROR: AddressSanitizer: unknown-crash on address 0x3d4a6e201754c0 at pc 0x55dea1272914 bp 0x7fffc211b970 sp 0x7fffc211b140
+WRITE of size 17251810424607936 at 0x3d4a6e201754c0 thread T0
+    #0 0x55dea1272913 in __asan_memset (/work/work-out/pdftotext.asan+0x149913) (BuildId: 32dce229172ab37a5f6b914b4b941bb80b9856c6)
+    #1 0x55dea13e0899 in JBIG2Bitmap::clearToZero() /src/xpdf-asan/xpdf/JBIG2Stream.cc:747:3
+    #2 0x55dea13e0899 in JBIG2Stream::readGenericBitmap(int, int, int, int, int, int, JBIG2Bitmap*, int*, int*, int) /src/xpdf-asan/xpdf/JBIG2Stream.cc:2523:11
+    #3 0x55dea13ced6d in JBIG2Stream::readGenericRegionSeg(unsigned int, int, int, unsigned int) /src/xpdf-asan/xpdf/JBIG2Stream.cc:2485:12
+    #4 0x55dea13beb28 in JBIG2Stream::readSegments() /src/xpdf-asan/xpdf/JBIG2Stream.cc
+    #5 0x55dea13bd3e7 in JBIG2Stream::reset() /src/xpdf-asan/xpdf/JBIG2Stream.cc:1179:3
+    #6 0x55dea141cba3 in Object::streamReset() /src/xpdf-asan/xpdf/./Object.h:280:13
+    #7 0x55dea141cba3 in Lexer::Lexer(XRef*, Object*) /src/xpdf-asan/xpdf/Lexer.cc:74:12
+    #8 0x55dea131fa15 in Gfx::display(Object*, int) /src/xpdf-asan/xpdf/Gfx.cc:552:33
+    #9 0x55dea1436948 in Page::displaySlice(OutputDev*, double, double, int, int, int, int, int, int, int, int, Catalog*, int (*)(void*), void*) /src/xpdf-asan/xpdf/Page.cc:317:10
+    #10 0x55dea143620f in Page::display(OutputDev*, double, double, int, int, int, int, Catalog*, int (*)(void*), void*) /src/xpdf-asan/xpdf/Page.cc:264:3
+    #11 0x55dea1440a4c in PDFDoc::displayPage(OutputDev*, int, double, double, int, int, int, int, int (*)(void*), void*) /src/xpdf-asan/xpdf/PDFDoc.cc:372:27
+    #12 0x55dea1440a4c in PDFDoc::displayPages(OutputDev*, int, int, double, double, int, int, int, int, int (*)(void*), void*) /src/xpdf-asan/xpdf/PDFDoc.cc:385:5
+    #13 0x55dea14d4436 in main /src/xpdf-asan/xpdf/pdftotext.cc:237:10
+    #14 0x7f5dd63dbd8f  (/lib/x86_64-linux-gnu/libc.so.6+0x29d8f) (BuildId: 490fef8403240c91833978d494d39e537409b92e)
+    #15 0x7f5dd63dbe3f in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e3f) (BuildId: 490fef8403240c91833978d494d39e537409b92e)
+    #16 0x55dea11d9634 in _start (/work/work-out/pdftotext.asan+0xb0634) (BuildId: 32dce229172ab37a5f6b914b4b941bb80b9856c6)
+
+Address 0x3d4a6e201754c0 is a wild pointer inside of access range of size 0x3d4a6e201754c0.
+SUMMARY: AddressSanitizer: unknown-crash (/work/work-out/pdftotext.asan+0x149913) (BuildId: 32dce229172ab37a5f6b914b4b941bb80b9856c6) in __asan_memset
+==21643==ABORTING
